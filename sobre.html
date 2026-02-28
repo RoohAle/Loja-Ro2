@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre — Maison Éclat</title>
+    <link rel="stylesheet" href="estilos/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">Maison Éclat</a>
+    <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="sobre.html" class="ativo">Sobre</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+    <div class="burger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO -->
+    <section class="sobre-hero">
+        <div class="sobre-hero-bg"></div>
+        <div class="sobre-hero-content">
+            <span class="secao-eyebrow" style="margin-bottom:20px; display:block;">Nossa História</span>
+            <h1>A arte de <em>escolher</em><br>o extraordinário</h1>
+            <p>Porque algumas peças não são apenas acessórios — são heranças.</p>
+        </div>
+    </section>
+
+    <!-- SOBRE STRIP -->
+    <section class="sobre-strip">
+        <div class="sobre-imagem">
+            <img src="https://picsum.photos/seed/about2/800/700" alt="Maison Éclat">
+        </div>
+        <div class="sobre-texto">
+            <span class="secao-eyebrow">Quem Somos</span>
+            <h2>Nascemos da <em>paixão</em> pelo luxo</h2>
+            <p>A Maison Éclat surgiu de uma obsessão saudável: a busca pelas peças mais incríveis, raras e autênticas das maiores maisons do mundo.</p>
+            <p>Somos mais do que uma loja. Somos curadores de história, estilo e sofisticação. Cada item em nosso catálogo passa por uma seleção rigorosa antes de chegar até você.</p>
+            <p>Nosso compromisso é simples: entregar não apenas uma bolsa, mas uma experiência que você vai guardar para sempre.</p>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stat-item fade-in">
+            <span class="stat-numero">200+</span>
+            <span class="stat-label">Peças em Estoque</span>
+        </div>
+        <div class="stat-item fade-in">
+            <span class="stat-numero">6</span>
+            <span class="stat-label">Marcas de Luxo</span>
+        </div>
+        <div class="stat-item fade-in">
+            <span class="stat-numero">100%</span>
+            <span class="stat-label">Autenticidade Garantida</span>
+        </div>
+        <div class="stat-item fade-in">
+            <span class="stat-numero">5★</span>
+            <span class="stat-label">Avaliação dos Clientes</span>
+        </div>
+    </div>
+
+    <!-- VALORES -->
+    <div class="divisor">
+        <div class="divisor-linha"></div>
+        <div class="divisor-icone">✦ ✦ ✦</div>
+        <div class="divisor-linha"></div>
+    </div>
+
+    <div class="secao-titulo fade-in">
+        <span class="secao-eyebrow">Nossos Pilares</span>
+        <h2>O que nos <em>guia</em></h2>
+    </div>
+
+    <div class="sobre-valores">
+        <div class="valor-card fade-in">
+            <span class="valor-icone">◈</span>
+            <div class="valor-titulo">Autenticidade</div>
+            <p class="valor-desc">Cada peça é meticulosamente verificada. Trabalhamos apenas com itens 100% autênticos, acompanhados de toda a documentação original das maisons.</p>
+        </div>
+        <div class="valor-card fade-in">
+            <span class="valor-icone">◇</span>
+            <div class="valor-titulo">Exclusividade</div>
+            <p class="valor-desc">Nosso catálogo é uma curadoria de rarezas. Priorizamos peças de edições limitadas, descontinuadas e de alta demanda no mercado internacional.</p>
+        </div>
+        <div class="valor-card fade-in">
+            <span class="valor-icone">◈</span>
+            <div class="valor-titulo">Experiência</div>
+            <p class="valor-desc">Da primeira mensagem à entrega, cada etapa é pensada para que você se sinta tratada como a cliente especial que você é. Atendimento personalizado e discreto.</p>
+        </div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <section style="text-align:center; padding: 80px 40px; background: var(--preto-suave); border-top: 1px solid rgba(201,168,76,0.1);">
+        <span class="secao-eyebrow" style="display:block; margin-bottom: 16px;">Pronta para o próximo capítulo?</span>
+        <h2 style="font-family: var(--fonte-display); font-size: clamp(32px, 4vw, 52px); font-weight: 300; color: var(--branco); margin-bottom: 40px;">Explore nossa <em style="color:var(--ouro)">coleção</em></h2>
+        <a href="catalogo.html" class="btn-primario"><span>Ver Catálogo Completo</span></a>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <span class="footer-logo">Maison Éclat</span>
+            <p class="footer-desc">Curadoria exclusiva das peças mais icônicas das maiores maisons do mundo.</p>
+        </div>
+        <div>
+            <span class="footer-titulo">Navegação</span>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+        </div>
+        <div>
+            <span class="footer-titulo">Marcas</span>
+            <div class="footer-links">
+                <a href="catalogo.html">Prada</a>
+                <a href="catalogo.html">Louis Vuitton</a>
+                <a href="catalogo.html">Balenciaga</a>
+                <a href="catalogo.html">Gucci</a>
+                <a href="catalogo.html">Hermès</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Maison Éclat. Todos os direitos reservados.</span>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() { document.getElementById('nav').classList.toggle('aberto'); }
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visivel'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

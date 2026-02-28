@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo — Maison Éclat</title>
+    <link rel="stylesheet" href="estilos/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">Maison Éclat</a>
+    <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="catalogo.html" class="ativo">Catálogo</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+    <div class="burger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<main>
+
+    <div class="catalogo-hero">
+        <span class="secao-eyebrow">Curadoria Exclusiva</span>
+        <h1>Nossa <em>Coleção</em></h1>
+        <p>Peças autênticas das maiores maisons do mundo</p>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filtros-section">
+        <div class="filtros-row">
+            <span class="filtros-label">Marca</span>
+            <div class="filtros-grupo" id="filtros-marca">
+                <button class="filtro-btn ativo" data-marca="todos">Todas</button>
+                <button class="filtro-btn" data-marca="Prada">Prada</button>
+                <button class="filtro-btn" data-marca="Louis Vuitton">Louis Vuitton</button>
+                <button class="filtro-btn" data-marca="Balenciaga">Balenciaga</button>
+                <button class="filtro-btn" data-marca="Gucci">Gucci</button>
+                <button class="filtro-btn" data-marca="Hermès">Hermès</button>
+                <button class="filtro-btn" data-marca="Chanel">Chanel</button>
+            </div>
+        </div>
+        <div class="filtros-row">
+            <span class="filtros-label">Faixa de Valor</span>
+            <div class="filtros-grupo" id="filtros-preco">
+                <button class="filtro-btn ativo" data-preco="todos">Todos</button>
+                <button class="filtro-btn" data-preco="0-15000">Até R$ 15.000</button>
+                <button class="filtro-btn" data-preco="15000-25000">R$ 15k – R$ 25k</button>
+                <button class="filtro-btn" data-preco="25000-50000">R$ 25k – R$ 50k</button>
+                <button class="filtro-btn" data-preco="50000-999999">Acima de R$ 50k</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="produtos-grid" id="grid-catalogo"></div>
+
+    <div id="sem-resultados" style="display:none; text-align:center; padding: 80px 20px;">
+        <p style="font-family: var(--fonte-display); font-size:28px; color: var(--cinza); font-style:italic;">Nenhuma peça encontrada para este filtro.</p>
+    </div>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="fecharModalOverlay(event)">
+    <div class="modal" id="modal">
+        <button class="modal-fechar" onclick="fecharModal()">✕</button>
+        <div class="modal-carrossel">
+            <div class="carrossel-track" id="carrossel-track"></div>
+            <button class="carrossel-btn carrossel-prev" onclick="moverCarrossel(-1)">‹</button>
+            <button class="carrossel-btn carrossel-next" onclick="moverCarrossel(1)">›</button>
+            <div class="carrossel-dots" id="carrossel-dots"></div>
+        </div>
+        <div class="modal-conteudo">
+            <div>
+                <span class="modal-marca" id="modal-marca"></span>
+                <div class="modal-nome" id="modal-nome"></div>
+                <div class="modal-linha"></div>
+                <div class="modal-preco" id="modal-preco"></div>
+                <p class="modal-descricao" id="modal-desc"></p>
+                <div class="modal-atributos" id="modal-atributos"></div>
+            </div>
+            <a class="btn-whatsapp" id="modal-whatsapp" href="#" target="_blank">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Tenho Interesse
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <span class="footer-logo">Maison Éclat</span>
+            <p class="footer-desc">Curadoria exclusiva das peças mais icônicas das maiores maisons do mundo.</p>
+        </div>
+        <div>
+            <span class="footer-titulo">Navegação</span>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+        </div>
+        <div>
+            <span class="footer-titulo">Marcas</span>
+            <div class="footer-links">
+                <a href="#">Prada</a><a href="#">Louis Vuitton</a><a href="#">Balenciaga</a><a href="#">Gucci</a><a href="#">Hermès</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Maison Éclat. Todos os direitos reservados.</span>
+    </div>
+</footer>
+
+<script>
+const NUMERO_WHATSAPP = "5500000000000";
+
+const todosProdutos = [
+    { marca: "Prada", nome: "Re-Nylon Tote", preco: "R$ 12.800", precoNum: 12800, desc: "Icônica bolsa tote em nylon regenerado. Acabamentos em couro Saffiano com hardware dourado.", fotos: ["https://picsum.photos/seed/prada1/600/600","https://picsum.photos/seed/prada2/600/600","https://picsum.photos/seed/prada3/600/600","https://picsum.photos/seed/prada4/600/600"], atributos: { "Material": "Nylon + Saffiano", "Cor": "Preto", "Dimensões": "38 × 30 × 16 cm", "Inclui": "Dustbag + Cartão" } },
+    { marca: "Prada", nome: "Galleria Saffiano", preco: "R$ 21.500", precoNum: 21500, desc: "A bolsa Galleria é o símbolo do savoir-faire da Prada. Couro Saffiano com logo triangular em metal.", fotos: ["https://picsum.photos/seed/prada5/600/600","https://picsum.photos/seed/prada6/600/600","https://picsum.photos/seed/prada7/600/600"], atributos: { "Material": "Couro Saffiano", "Cor": "Caramelo", "Dimensões": "36 × 26 × 17 cm", "Inclui": "Dustbag + Caixa" } },
+    { marca: "Louis Vuitton", nome: "Neverfull MM", preco: "R$ 18.500", precoNum: 18500, desc: "A mais icônica da maison. Tela Monogram com bordas em couro natural. Versátil e atemporal.", fotos: ["https://picsum.photos/seed/lv1/600/600","https://picsum.photos/seed/lv2/600/600","https://picsum.photos/seed/lv3/600/600","https://picsum.photos/seed/lv4/600/600"], atributos: { "Material": "Monogram + Vachetta", "Cor": "Monogram", "Dimensões": "31 × 28 × 17 cm", "Inclui": "Dustbag + Recibo" } },
+    { marca: "Louis Vuitton", nome: "Speedy Bandoulière 30", preco: "R$ 14.200", precoNum: 14200, desc: "Clássico reinventado com alça de ombro. Tela Damier Azur com couro natural. Elegante e funcional.", fotos: ["https://picsum.photos/seed/lv5/600/600","https://picsum.photos/seed/lv6/600/600","https://picsum.photos/seed/lv7/600/600"], atributos: { "Material": "Damier Azur + Vachetta", "Cor": "Azur", "Dimensões": "30 × 21 × 17 cm", "Inclui": "Dustbag" } },
+    { marca: "Balenciaga", nome: "City Bag", preco: "R$ 22.300", precoNum: 22300, desc: "A City Bag redefiniu o conceito de it-bag. Couro de bezerro com hardware dourado envelhecido.", fotos: ["https://picsum.photos/seed/bal1/600/600","https://picsum.photos/seed/bal2/600/600","https://picsum.photos/seed/bal3/600/600","https://picsum.photos/seed/bal4/600/600"], atributos: { "Material": "Couro de Bezerro", "Cor": "Preto", "Dimensões": "38 × 26 × 14 cm", "Inclui": "Dustbag + Espelho" } },
+    { marca: "Balenciaga", nome: "Hourglass XS", preco: "R$ 31.000", precoNum: 31000, desc: "Silhueta escultural que define o luxo contemporâneo da Balenciaga. Estruturada, audaciosa.", fotos: ["https://picsum.photos/seed/bal5/600/600","https://picsum.photos/seed/bal6/600/600","https://picsum.photos/seed/bal7/600/600"], atributos: { "Material": "Couro Liso", "Cor": "Off-White", "Dimensões": "19 × 13 × 8 cm", "Inclui": "Dustbag + Caixa" } },
+    { marca: "Gucci", nome: "Marmont GG", preco: "R$ 16.800", precoNum: 16800, desc: "Couro matelassé com o icônico logo GG em hardware dourado. Elegância italiana em estado puro.", fotos: ["https://picsum.photos/seed/gucci1/600/600","https://picsum.photos/seed/gucci2/600/600","https://picsum.photos/seed/gucci3/600/600","https://picsum.photos/seed/gucci4/600/600"], atributos: { "Material": "Couro Matelassé", "Cor": "Rosa Claro", "Dimensões": "26 × 15 × 7 cm", "Inclui": "Dustbag + Caixa" } },
+    { marca: "Gucci", nome: "Dionysus GG Supreme", preco: "R$ 28.500", precoNum: 28500, desc: "Inspirada na mitologia grega, com fecho Dionísio inconfundível. Tela GG Supreme com detalhes em couro.", fotos: ["https://picsum.photos/seed/gucci5/600/600","https://picsum.photos/seed/gucci6/600/600","https://picsum.photos/seed/gucci7/600/600"], atributos: { "Material": "GG Supreme + Couro", "Cor": "Bege/Ébano", "Dimensões": "28 × 18 × 9 cm", "Inclui": "Dustbag + Caixa" } },
+    { marca: "Hermès", nome: "Birkin 30", preco: "R$ 85.000", precoNum: 85000, desc: "O símbolo máximo do luxo. A Birkin é o ápice da savoir-faire francesa, feita à mão por artesãos Hermès.", fotos: ["https://picsum.photos/seed/hermes1/600/600","https://picsum.photos/seed/hermes2/600/600","https://picsum.photos/seed/hermes3/600/600"], atributos: { "Material": "Togo Leather", "Cor": "Gold", "Dimensões": "30 × 22 × 16 cm", "Inclui": "Cadeado + Caixa" } },
+    { marca: "Chanel", nome: "Classic Flap Medium", preco: "R$ 57.000", precoNum: 57000, desc: "O epítome do estilo intemporal. Couro caviar matelassé com o icônico fecho CC dourado da Coco Chanel.", fotos: ["https://picsum.photos/seed/chanel1/600/600","https://picsum.photos/seed/chanel2/600/600","https://picsum.photos/seed/chanel3/600/600","https://picsum.photos/seed/chanel4/600/600"], atributos: { "Material": "Couro Caviar", "Cor": "Preto", "Dimensões": "25 × 16 × 7 cm", "Inclui": "Dustbag + Caixa + Cartão" } },
+    { marca: "Chanel", nome: "Boy Bag Old Medium", preco: "R$ 64.000", precoNum: 64000, desc: "Ousada e feminina ao mesmo tempo. A Boy Bag com corrente entrelaçada é um ícone da modernidade Chanel.", fotos: ["https://picsum.photos/seed/chanel5/600/600","https://picsum.photos/seed/chanel6/600/600","https://picsum.photos/seed/chanel7/600/600"], atributos: { "Material": "Couro Lambskin", "Cor": "Vermelho", "Dimensões": "25 × 16 × 9 cm", "Inclui": "Dustbag + Caixa" } },
+    { marca: "Hermès", nome: "Kelly 28", preco: "R$ 92.000", precoNum: 92000, desc: "Peça rara e atemporal. A Kelly, batizada em homenagem à Grace Kelly, é produzida artesanalmente por um único artesão.", fotos: ["https://picsum.photos/seed/hermes5/600/600","https://picsum.photos/seed/hermes6/600/600","https://picsum.photos/seed/hermes7/600/600"], atributos: { "Material": "Epsom Leather", "Cor": "Rouge Casaque", "Dimensões": "28 × 22 × 10 cm", "Inclui": "Alça + Cadeado + Caixa" } },
+];
+
+let filtraMarca = "todos";
+let filtraPreco = "todos";
+let slideAtual = 0;
+let produtoAtual = null;
+
+function renderGrid() {
+    const grid = document.getElementById('grid-catalogo');
+    const semRes = document.getElementById('sem-resultados');
+
+    const filtrados = todosProdutos.filter(p => {
+        const marcaOk = filtraMarca === "todos" || p.marca === filtraMarca;
+        let precoOk = true;
+        if (filtraPreco !== "todos") {
+            const [min, max] = filtraPreco.split('-').map(Number);
+            precoOk = p.precoNum >= min && p.precoNum <= max;
+        }
+        return marcaOk && precoOk;
+    });
+
+    if (filtrados.length === 0) {
+        grid.innerHTML = '';
+        semRes.style.display = 'block';
+        return;
+    }
+
+    semRes.style.display = 'none';
+    grid.innerHTML = filtrados.map((p, i) => {
+        const idxOriginal = todosProdutos.indexOf(p);
+        return `
+        <div class="card-produto fade-in" onclick="abrirModal(${idxOriginal})">
+            <img src="${p.fotos[0]}" alt="${p.nome}">
+            <div class="card-overlay"></div>
+            <div class="card-info">
+                <span class="card-marca">${p.marca}</span>
+                <div class="card-nome">${p.nome}</div>
+                <div class="card-preco">${p.preco}</div>
+                <button class="card-btn">Ver Peça ›</button>
+            </div>
+        </div>`;
+    }).join('');
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// FILTROS
+document.getElementById('filtros-marca').addEventListener('click', e => {
+    if (!e.target.classList.contains('filtro-btn')) return;
+    document.querySelectorAll('#filtros-marca .filtro-btn').forEach(b => b.classList.remove('ativo'));
+    e.target.classList.add('ativo');
+    filtraMarca = e.target.dataset.marca;
+    renderGrid();
+});
+
+document.getElementById('filtros-preco').addEventListener('click', e => {
+    if (!e.target.classList.contains('filtro-btn')) return;
+    document.querySelectorAll('#filtros-preco .filtro-btn').forEach(b => b.classList.remove('ativo'));
+    e.target.classList.add('ativo');
+    filtraPreco = e.target.dataset.preco;
+    renderGrid();
+});
+
+// MODAL
+function abrirModal(index) {
+    produtoAtual = todosProdutos[index];
+    slideAtual = 0;
+
+    document.getElementById('modal-marca').textContent = produtoAtual.marca;
+    document.getElementById('modal-nome').textContent = produtoAtual.nome;
+    document.getElementById('modal-preco').textContent = produtoAtual.preco;
+    document.getElementById('modal-desc').textContent = produtoAtual.desc;
+
+    const attrEl = document.getElementById('modal-atributos');
+    attrEl.innerHTML = Object.entries(produtoAtual.atributos).map(([k, v]) =>
+        `<div class="modal-atributo"><span class="modal-atributo-label">${k}</span><span class="modal-atributo-valor">${v}</span></div>`
+    ).join('');
+
+    const track = document.getElementById('carrossel-track');
+    track.innerHTML = produtoAtual.fotos.map(src =>
+        `<div class="carrossel-slide"><img src="${src}" alt="${produtoAtual.nome}"></div>`
+    ).join('');
+
+    const dots = document.getElementById('carrossel-dots');
+    dots.innerHTML = produtoAtual.fotos.map((_, i) =>
+        `<button class="carrossel-dot ${i === 0 ? 'ativo' : ''}" onclick="irParaSlide(${i})"></button>`
+    ).join('');
+
+    atualizarCarrossel();
+
+    const msg = encodeURIComponent(`Olá! Tenho interesse na peça: ${produtoAtual.marca} — ${produtoAtual.nome} (${produtoAtual.preco}). Poderia me dar mais informações?`);
+    document.getElementById('modal-whatsapp').href = `https://wa.me/${NUMERO_WHATSAPP}?text=${msg}`;
+
+    document.getElementById('modal-overlay').classList.add('aberto');
+    document.body.style.overflow = 'hidden';
+}
+
+function fecharModal() {
+    document.getElementById('modal-overlay').classList.remove('aberto');
+    document.body.style.overflow = '';
+}
+
+function fecharModalOverlay(e) {
+    if (e.target === document.getElementById('modal-overlay')) fecharModal();
+}
+
+function moverCarrossel(direcao) {
+    const total = produtoAtual.fotos.length;
+    slideAtual = (slideAtual + direcao + total) % total;
+    atualizarCarrossel();
+}
+
+function irParaSlide(index) {
+    slideAtual = index;
+    atualizarCarrossel();
+}
+
+function atualizarCarrossel() {
+    document.getElementById('carrossel-track').style.transform = `translateX(-${slideAtual * 100}%)`;
+    document.querySelectorAll('.carrossel-dot').forEach((dot, i) => dot.classList.toggle('ativo', i === slideAtual));
+}
+
+document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('modal-overlay').classList.contains('aberto')) return;
+    if (e.key === 'ArrowLeft') moverCarrossel(-1);
+    if (e.key === 'ArrowRight') moverCarrossel(1);
+    if (e.key === 'Escape') fecharModal();
+});
+
+function toggleMenu() { document.getElementById('nav').classList.toggle('aberto'); }
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visivel'); });
+}, { threshold: 0.1 });
+
+renderGrid();
+</script>
+
+</body>
+</html>
