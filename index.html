@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maison Éclat — Luxury Boutique</title>
+    <title>Luxei</title>
     <link rel="stylesheet" href="estilos/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body>
 
 <header id="header">
-    <a href="index.html" class="logo">Maison Éclat</a>
+    <a href="index.html" class="logo">Luxei</a>
     <nav id="nav">
         <a href="index.html" class="ativo">Home</a>
         <a href="catalogo.html">Catálogo</a>
@@ -29,7 +29,7 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-eyebrow">Nova Coleção 2025</div>
+            <div class="hero-eyebrow">Nova Coleção 2026</div>
             <h1>Arte que se<br><em>carrega</em> com você</h1>
             <p>Peças únicas das maiores maisons do mundo. Cada item, uma obra. Cada detalhe, uma declaração de estilo.</p>
             <a href="catalogo.html" class="btn-primario"><span>Explorar Coleção</span></a>
@@ -70,12 +70,12 @@
     <div class="produtos-grid" id="grid-home">
 
         <div class="card-produto fade-in" onclick="abrirModal(0)">
-            <img src="https://picsum.photos/seed/bag1/600/800" alt="Bolsa Prada">
+            <img src="img/fendi/foto1.jpg" alt="Bolsa Fendi">
             <div class="card-overlay"></div>
             <div class="card-info">
-                <span class="card-marca">Prada</span>
-                <div class="card-nome">Re-Nylon Tote</div>
-                <div class="card-preco">R$ 12.800</div>
+                <span class="card-marca">Fendi</span>
+                <div class="card-nome">Oyster</div>
+                <div class="card-preco">R$ 2.000</div>
                 <button class="card-btn">Ver Peça ›</button>
             </div>
         </div>
@@ -216,17 +216,18 @@
 // ---- DADOS DOS PRODUTOS ----
 const produtos = [
     {
-        marca: "Prada",
-        nome: "Re-Nylon Tote",
-        preco: "R$ 12.800",
-        desc: "Icônica bolsa tote em nylon regenerado, símbolo do compromisso da Prada com a inovação sustentável. Acabamentos em couro Saffiano com hardware dourado.",
+        marca: "Fendi",
+        nome: "Oyster",
+        preco: "R$ 2.000",
+        desc: "Icônica bolsa Oyster da Fendi. Valor reduzido em razão de possuir um zíper na lateral com o puxador quebrado.",
         fotos: [
-            "https://picsum.photos/seed/prada1/600/600",
-            "https://picsum.photos/seed/prada2/600/600",
-            "https://picsum.photos/seed/prada3/600/600",
-            "https://picsum.photos/seed/prada4/600/600"
+            "img/fendi/foto1.jpg",
+            "img/fendi/foto2.jpg",
+            "img/fendi/foto3.jpg",
+            "img/fendi/foto4.jpg",
+            "img/fendi/foto5.jpg"
         ],
-        atributos: { "Material": "Nylon Re-Nylon + Couro Saffiano", "Cor": "Preto", "Dimensões": "38 × 30 × 16 cm", "Inclui": "Dustbag + Cartão" }
+        atributos: { "Material": "Tela + Couro Genuíno", "Cor": "Bege + couro cinza claro", "Dimensões": "38 × 30 × 16 cm", "Inclui": "Dustbag + Cartão" }
     },
     {
         marca: "Louis Vuitton",
